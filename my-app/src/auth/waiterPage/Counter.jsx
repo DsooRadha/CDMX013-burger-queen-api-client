@@ -4,14 +4,14 @@ export const Counter = () =>{
     let [value, setValue]=useState(1)
 // console.log(value)
     const addProduct = () => {
-        setValue(value+1)
+        setValue(value + 1)
     }
 
     const removeProduct = () => {
-        setValue(value-1) 
+        setValue(value - 1)
     }
 
-    return(
+    return (
         <div className="orderButton">
         <button onClick={addProduct}  >+</button>
         <p>{value<1?value=1:value}</p>

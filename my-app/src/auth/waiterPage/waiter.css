@@ -123,13 +123,14 @@
   justify-items: flex-end;
 }
 
-.container-menu{
-    padding: 2vw;
+/* .container-menu{
+    display: grid;
     margin: 0vw 0vw 2vw -3vw;
-    display:flex;
+    
     flex-wrap: wrap;
     width: 36vw;
     height: 80vh;
+    background-color: #396F27;
     justify-content: center;
 }
 
@@ -138,7 +139,7 @@
     padding: 2vw;
     border-radius: 0.5vw;
     margin: 1vw 2vw 0 3vw;
-    width: 9vw;
+    width: 15vw;
     height: 10vh;
     display: flex;
     flex-direction: column;
@@ -159,29 +160,33 @@
 }
 .orderButton p{
     margin: 0 0.5vw 0 0.5vw;
-}
+} */
 
-/* GRIIIID
+
 .container-menu{
-    background-color: #396F27;
     display: grid;
     grid-template-columns: 15vw 15vw;
     width: 35vw;
     height: 80vh;
-    gap: 3vw;
+    gap: 1.5vw;
+    row-gap: -30vh;
 }
 
 .container-item{
-    background-color: #656B81;
-    padding: 2vw;
+    background-color: #d5d8e2;
     border: #5d276f;
-    border-radius: 2vw;
+    border-radius: 0.5vw;
     margin: 1px;
-    width: 12vw;
-    height: 7vh;
+    width: 15vw;
+    height: 15vh;
 }
 .container-item p {
     margin: 0;
     display: flex;
     align-self: center;
-} */
+    color: #343240;
+} 
+
+p{
+    color: #343240;
+}

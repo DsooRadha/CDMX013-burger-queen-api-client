@@ -3,10 +3,15 @@ import EditIcon from '@mui/icons-material/Edit';
 import './waiter.css'
 import { useEffect } from 'react';
 import { useState } from 'react';
+<<<<<<< HEAD
 // import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { Order, getProductsData } from "./Order"
-
+=======
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import { Counter } from "./Counter";
+>>>>>>> 21a5088188263e75bf710998c50e0e5945058a57
 
 export const Waiter = () => {
     const [products, setProducts] = useState([])
@@ -36,6 +41,7 @@ export const Waiter = () => {
         navigate('/')
     }
 
+<<<<<<< HEAD
     const showOrder = (prueba) => {
         console.log(prueba)
         setPrueba({
@@ -44,6 +50,21 @@ export const Waiter = () => {
         })
     }
 console.log(prueba)
+=======
+    const addProductOrder = (productOrder) => {
+        // console.log(productOrder.price)
+        setProductOrder({...productOrder,
+            product:[productOrder.product],
+            // price: {productOrder.price}
+        })
+        setShowContent(true)
+    }
+    console.log(productOrder);
+
+    // const addProudctOrder = (item) =>{
+    //     return {product:item.product, price:item.price}
+    // }
+>>>>>>> 21a5088188263e75bf710998c50e0e5945058a57
 
     return (
         <section className='waiterView'>
@@ -58,6 +79,7 @@ console.log(prueba)
                     <button className='btnViolet' onClick={mainMenu}>24 HORAS</button>
                 </section>
                 <div className="container-menu">
+<<<<<<< HEAD
                     <section>
                         {currentMenu.map((item) =>
                             <button className="container-item" key={item.id} 
@@ -70,6 +92,15 @@ console.log(prueba)
                         )}
 
                     </section>
+=======
+                    {currentMenu.map((item) =>
+                        <button className="container-item"
+                            onClick={() => addProductOrder({product:item.product, price:item.price})} key={item.id}>
+                            <p className="productName">{item.product}</p>
+                            <p>${item.price}</p>
+                        </button>
+                    )}
+>>>>>>> 21a5088188263e75bf710998c50e0e5945058a57
                 </div>
             </div>
             <div className='client'>
@@ -78,7 +109,11 @@ console.log(prueba)
                     <EditIcon />
                 </section>
                 <div className='orderProducts'>COMANDA
+<<<<<<< HEAD
                     <Order producto={prueba.product} precio={prueba.price} />
+=======
+                    {showContent && <Counter productName={productOrder.product} productPrice={productOrder.price}/>}
+>>>>>>> 21a5088188263e75bf710998c50e0e5945058a57
                 </div>
                 <div className='total'> TOTAL</div>
                 <section className="btnOrder">
