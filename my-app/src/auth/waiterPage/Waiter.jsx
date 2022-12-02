@@ -3,38 +3,32 @@ import EditIcon from '@mui/icons-material/Edit';
 import './waiter.css'
 import { useEffect } from 'react';
 import { useState } from 'react';
-import axios from "axios";
-import { useNavigate} from 'react-router-dom';
-import { Counter } from "./Counter";
+// import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import { Order, getProductsData } from "./Order"
 
 
 export const Waiter = () => {
     const [products, setProducts] = useState([])
     const [currentMenu, setCurrentMenu] = useState([])
+    const [prueba, setPrueba] = useState({
+        product: '',
+        price: '',
+    })
 
-
-    const getProductsData = async () => {
-        const result = await axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/Products')
-        const productData = result.data
-        setProducts(productData);
-      
-    };
-
-    const breakfastMenu = () =>{
+    const breakfastMenu = () => {
         const breakfastRender = products.filter((products => products.menu === 'Desayuno'));
         setCurrentMenu(breakfastRender)
-      
     }
 
-    const mainMenu = () =>{
+    const mainMenu = () => {
         const mainMenuRender = products.filter((products => products.menu === '24 hrs.'));
         setCurrentMenu(mainMenuRender)
-        console.log(mainMenuRender)
     }
-    
+
 
     useEffect(() => {
-        getProductsData()
+        getProductsData(setProducts)
     }, []);
 
     const navigate = useNavigate();
@@ -42,6 +36,14 @@ export const Waiter = () => {
         navigate('/')
     }
 
+    const showOrder = (prueba) => {
+        console.log(prueba)
+        setPrueba({
+            product: prueba.product,
+            precie: prueba.price
+        })
+    }
+console.log(prueba)
 
     return (
         <section className='waiterView'>
@@ -56,27 +58,32 @@ export const Waiter = () => {
                     <button className='btnViolet' onClick={mainMenu}>24 HORAS</button>
                 </section>
                 <div className="container-menu">
-                {currentMenu.map((item) =>
-                        <div className="container-item" key={item.id}>
-                            <p className="productName">{item.product}</p>
-                            <p>${item.price}</p>
-                           <Counter item={item}/>
-                        </div>
-                      )}
+                    <section>
+                        {currentMenu.map((item) =>
+                            <button className="container-item" key={item.id} 
+                            onClick={()=>showOrder(item)}
+                            >
+                                <p className="productName">{item.product}</p>
+                                <p>${item.price}</p>
+
+                            </button>
+                        )}
+
+                    </section>
                 </div>
             </div>
             <div className='client'>
                 <section className='idOrder'>
-                <input type="text" />
-                <EditIcon />
+                    <input type="text" />
+                    <EditIcon />
                 </section>
                 <div className='orderProducts'>COMANDA
-               
+                    <Order producto={prueba.product} precio={prueba.price} />
                 </div>
                 <div className='total'> TOTAL</div>
                 <section className="btnOrder">
-                <button className='btnRed'>CANCELAR</button>
-                <button className='btnGreen'>ENVIAR</button>
+                    <button className='btnRed'>CANCELAR</button>
+                    <button className='btnGreen'>ENVIAR</button>
                 </section>
             </div>
         </section>

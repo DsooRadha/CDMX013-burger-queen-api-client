@@ -1,8 +1,8 @@
 import { useState } from "react"
 
-export const Counter = (item) =>{
-    let [value, setValue]=useState(0)
-
+export const Counter = () =>{
+    let [value, setValue]=useState(1)
+// console.log(value)
     const addProduct = () => {
         setValue(value+1)
     }
@@ -14,7 +14,7 @@ export const Counter = (item) =>{
     return(
         <div className="orderButton">
         <button onClick={addProduct}  >+</button>
-        <p>{value<1?value=0:value}</p>
+        <p>{value<1?value=1:value}</p>
         <button  onClick={removeProduct} >-</button>
     </div>
     )
