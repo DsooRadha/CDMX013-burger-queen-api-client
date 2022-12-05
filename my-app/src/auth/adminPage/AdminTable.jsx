@@ -182,9 +182,9 @@ export const AdminTable = ({ modified }) => {
             />
             {
                 modal && <Modal
-                    deleteFunction={deleteData}
+                    modalFunction={deleteData}
                     closeFunction={closeModal}
-                    message='empleado' />
+                    message='¿Deseas eliminar este empleado?' />
             }
         </div>
     </>

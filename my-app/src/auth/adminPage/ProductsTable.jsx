@@ -109,9 +109,9 @@ export const ProductsTable = () => {
             </table>
             {
                 modal && <Modal
-                    deleteFunction={deleteData}
+                    modalFunction={deleteData}
                     closeFunction={closeModal} 
-                    message='producto'
+                    message='¿Deseas eliminar este producto?'
                     />
             }
         </div>

@@ -42,8 +42,8 @@ const Welcome = () => {
                         if (element.area === 'Cocina') {
                             console.log('Cocina');
                         }
-                        if (element.area === 'Mesero') {
-                            console.log('Mesas');
+                        if (element.area === 'Meserx') {
+                            navigate('waiter')
                         }
                     } else {
                         setMessage(true)

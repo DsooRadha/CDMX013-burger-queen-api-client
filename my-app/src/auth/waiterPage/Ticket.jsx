@@ -1,6 +1,6 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 
-export const Counter = ({ item, deleteItem, addProductOrder, deleteProductOrder}) => {
+export const Ticket = ({ item, deleteItem, addProductOrder, deleteProductOrder}) => {
   
     const addProduct = () => {
         // setValue(value + 1)
