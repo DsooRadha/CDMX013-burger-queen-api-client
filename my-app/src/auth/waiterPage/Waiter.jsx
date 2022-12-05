@@ -53,16 +53,14 @@ export const Waiter = () => {
             setProductsOrder((state) => {
 
                 const newCurrentProduct = state.map((item) => {
-                  
                     if (item.product.id === product.id) {
-                        const nuevoProducto = item
-                        nuevoProducto.qty = item.qty + 0.5
-                        return nuevoProducto
-                    } 
-                        return item
+                        return { product, qty: currentProduct.qty + 1 }
+                    } else {
+                        return item }
                 });
-                
                 return newCurrentProduct
+
+                // return [...state.filter((item) => item.product.id !== product.id), { product, qty: currentProduct.qty + 1 }]
             })
         }
     }
@@ -73,14 +71,10 @@ export const Waiter = () => {
         setProductsOrder((state) => {
 
             const newCurrentProduct = state.map((item) => {
-                console.log(product.id, '::HOLA:::')
                 if (item.product.id === product.id) {
-                    console.log(item.product.id, ':::::ACA::::::');
-                    const nuevoProducto = item
-                    nuevoProducto.qty = item.qty - 0.5
-                    return nuevoProducto
-                } 
-                    return item
+                    return { product, qty: currentProduct.qty - 1 }
+                } else {
+                    return item }
             });
 
             return newCurrentProduct
@@ -98,14 +92,15 @@ export const Waiter = () => {
     }
 
     const handleApi = () => {
-        const hoy = new Date();
-        console.log(hoy,'-------O_o------')
-       const hour = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
+        const date = new Date();
+        const hour = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+
         const clientOrder = {
             name: client,
+            hour: hour,
             items: productsOrder,
             total: totalPrice(),
-            hour: hoy,
+            hour: hour,
         }
         console.log(clientOrder)
         axios.post('https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder', clientOrder)
