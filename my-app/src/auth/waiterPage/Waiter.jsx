@@ -65,9 +65,7 @@ export const Waiter = () => {
     }
 
     const deleteProduct=(product) => {
-        console.log(product);
         const filterProducts=productsOrder.filter((item)=>item.product.id !== product.id)
-
       setProductsOrder(filterProducts)
     }
 
@@ -81,13 +79,11 @@ export const Waiter = () => {
         total: totalPrice()
     } 
 
-    console.log(clientOrder)
 
     const clearOrder = () => {
         setProductsOrder([]);
     }
 
-    console.log(productsOrder,'::::::::::.');
     return (
         <section className='waiterView'>
             <div className='newOrder'>
@@ -116,7 +112,7 @@ export const Waiter = () => {
                 <div className='orderProducts'>
                     {showContent && productsOrder.map((item) => <Counter addProductOrder={addProductOrder} 
                     deleteProductOrder={deleteProductOrder} item={item} key={item.product.id} 
-                    deleteItem={() => deleteProduct(item.product)} />)}
+                    deleteItem={() => deleteProduct(item.product)} /> )}
                 </div>
                 <div className='total'> TOTAL ${totalPrice()}.00</div>
                 <section className="btnOrder">
