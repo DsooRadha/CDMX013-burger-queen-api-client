@@ -5,7 +5,7 @@ import { AdminInicio } from './auth/adminPage/Admin';
 import { AdminProducts } from './auth/adminPage/Admin';
 import { EditProducts } from './auth/adminPage/EditProducts';
 import { Waiter } from './auth/waiterPage/Waiter';
-import {Kitchen} from './auth/KitchenPage/kitchen'
+import { Kitchen } from './auth/kitchenPage/kitchen';
 
 function App() {
   return (

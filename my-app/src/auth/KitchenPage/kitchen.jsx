@@ -28,24 +28,19 @@ export const Kitchen = () => {
                     <button className='btnReady' >LISTOS</button>
                 </div>
                 <section className="orders">
-                    {orderKitchen.map((item) =>
-                        <div className='kitchenTicket'>
+                    {orderKitchen.length > 0 && orderKitchen.map((item) =>
+                        <div className='kitchenTicket' key={item.id} >
                             <section className="headerOrder">
                                 <CloseIcon key={item.id} />
                                 <p> {item.name}</p>
                                 <p>{item.hour}</p>
                             </section>
                             <div>
-                                {item.items.map((element) =>{
-                                    <p>{element.qty} </p>
-                                    
-                                    {element.product.map((i => {
-                                            <section>
-                                                <p>{i.product}</p>
-                                            </section>
-                                        }))
-                                    }
-                                }
+                                {item.items.map((element) =>
+                                    <div className="OrderItem" key={element.id}>
+                                       <p> {element.qty} </p>
+                                       <p> {element.product.product}</p>
+                                    </div>
                                 )}
                             </div>
                             <CheckIcon key={item.id} />

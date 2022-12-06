@@ -48,14 +48,15 @@
 .orders {
     display: grid;
     grid-template-columns: 20vw 20vw 20vw;
-    grid-template-rows: 17vh 17vh;
+    grid-template-rows: auto auto auto auto;
     gap: 2vw;
+    overflow: auto;
 }
 
 .kitchenTicket {
     background-color: #D9D9D9;
     border-radius: 1vw;
-    border: 0.5vh solid #EAAC40
+    border: 0.5vh solid #EAAC40;
 }
 
 .kitchenTicket p {
@@ -70,4 +71,16 @@
     align-items: center;
     height: 3.5vh;
     margin: -0.15vh;
+    border-radius: 0.5vw 0.5vw;
+}
+
+.OrderItem{
+    margin: 0.5vh;
+    display: flex;
+    flex-direction:row;
+}
+
+.OrderItem p{
+    margin: 0.5vw;
+    
 }
