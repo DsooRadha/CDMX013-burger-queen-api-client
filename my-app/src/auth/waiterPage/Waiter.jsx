@@ -1,40 +1,33 @@
-
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import axios from "axios";
-import Logo from "../elements/Logo"
 import './waiter.css'
 import { Ticket } from "./Ticket";
 import Modal from '../elements/Modal.jsx'
 import { Breakfast } from "./Breakfast";
-import {Menu} from "./Menu";
-
+import { Menu } from "./Menu";
+import { Buttons } from "./Buttons";
 
 export const Waiter = () => {
-    const [products, setProducts] = useState([]);
     const [productsOrder, setProductsOrder] = useState([])
     const [client, setClient] = useState("");
     const [modal, setModal] = useState(false);
     const [menu, setMenu] = useState(true);
-    const [menu24, setMenu24]= useState(false);
+    const [menu24, setMenu24] = useState(false);
+    const [allMenu, setAllMenu] = useState(false)
 
     const breakfastMenu = () => {
-        setMenu(true)
-        setMenu24(false)
-        // const breakfastRender = products.filter((products => products.menu === 'Desayuno'));
-        // setCurrentMenu(breakfastRender)
+        // setMenu(true)
+        // setMenu24(false)
+
+        setAllMenu(false)
+        console.log('cambio a falso');
     }
 
     const mainMenu = () => {
-        setMenu(false)
-        setMenu24(true)
-        // const mainMenuRender = products.filter((products => products.menu === '24hrs.'));
-        // setCurrentMenu(mainMenuRender)
-    }
-
-    const navigate = useNavigate();
-    const logOut = () => {
-        navigate('/')
+        // setMenu(false)
+        // setMenu24(true)
+        setAllMenu(true)
+        console.log('cambio a true');
     }
 
     const addProductOrder = (product) => {
@@ -60,13 +53,14 @@ export const Waiter = () => {
 
     const deleteProductOrder = (product) => {
         const currentProduct = productsOrder.find((item) => item.product.id === product.id)
+
         setProductsOrder((state) => {
             const newCurrentProduct = state.map((item) => {
                 if (item.product.id === product.id) {
                     return { product, qty: currentProduct.qty - 1 }
-                } else {
-                    return item
                 }
+                return item
+
             });
             return newCurrentProduct
         })
@@ -75,11 +69,11 @@ export const Waiter = () => {
     const deleteProduct = (product) => {
         const filterProducts = productsOrder.filter((item) => item.product.id !== product.id)
         setProductsOrder(filterProducts)
-    }
+    };
 
     const totalPrice = () => {
         return productsOrder.reduce((prev, item) => prev + item.qty * item.product.price, 0);
-    }
+    };
 
     const handleApi = () => {
         const date = new Date();
@@ -95,16 +89,16 @@ export const Waiter = () => {
         clearOrder()
         setClient('')
         setModal(false);
-    }
+    };
 
 
     const clearOrder = () => {
         setProductsOrder([]);
-    }
+    };
 
     const closeModal = () => {
         setModal(false);
-    }
+    };
 
     const showModal = () => {
         setModal(true);
@@ -113,18 +107,18 @@ export const Waiter = () => {
 
     return (
         <section className='waiterView'>
-            <div className='newOrder'>
-                <button className='btnViolet'>NUEVA ORDEN</button>
-                <Logo />
-                <button className='btnExit' onClick={logOut}>SALIR</button>
-            </div>
+            <Buttons />
             <div className='menu'>
                 <section>
                     <button className='btnGray' onClick={breakfastMenu}>DESAYUNO</button>
                     <button className='btnViolet' onClick={mainMenu}>24 HORAS</button>
                 </section>
-                {menu &&<Breakfast className="container-menu" addProductOrder={addProductOrder} /> }
-                {menu24 && <Menu  className="container-menu" addProductOrder={addProductOrder} /> }
+                {/* {menu &&<Breakfast className="container-menu" addProductOrder={addProductOrder} /> }
+                {menu24 && <Menu  className="container-menu" addProductOrder={addProductOrder} /> } */}
+
+                <Menu className="container-menu" addProductOrder={addProductOrder} url={allMenu ? 'https://637265f4025414c6370eb684.mockapi.io/api/bq/Products?menu=24hrs.'
+                    : 'https://637265f4025414c6370eb684.mockapi.io/api/bq/Products?menu=Desayuno'} />
+
             </div>
             <div className='client'>
                 <section className='idOrder'>

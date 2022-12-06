@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-export const Breakfast = ({ addProductOrder, }) => {
+export const Breakfast = ({ addProductOrder }) => {
     const [breakfastMenu, setbreakfastMenu] = useState([]);
 
     const getBreakfast = async () => {
@@ -14,7 +14,7 @@ export const Breakfast = ({ addProductOrder, }) => {
     }, []);
 
     return (
-        <div>
+        <div className="container-menu">
             {breakfastMenu.map((item) =>
                 <button className="container-item" onClick={() => addProductOrder(item)} key={item.id}>
                     <p className="productName">{item.product}</p>
