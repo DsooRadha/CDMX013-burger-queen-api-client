@@ -36,12 +36,16 @@ export const Kitchen = () => {
                                 <p>{item.hour}</p>
                             </section>
                             <div>
-                                {item.items.map((element) =>
+                                {item.items.map((element) =>{
                                     <p>{element.qty} </p>
-                                    //  {element.product.map((product=>{
-                                    // <p>{product.product}</p>
-                                    //  })
-                                    // )}
+                                    
+                                    {element.product.map((i => {
+                                            <section>
+                                                <p>{i.product}</p>
+                                            </section>
+                                        }))
+                                    }
+                                }
                                 )}
                             </div>
                             <CheckIcon key={item.id} />
