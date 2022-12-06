@@ -1,42 +1,36 @@
+
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 import Logo from "../elements/Logo"
 import './waiter.css'
-import { useEffect } from 'react';
-import { useState } from 'react';
-import axios from "axios";
-import { useNavigate } from 'react-router-dom';
 import { Ticket } from "./Ticket";
 import Modal from '../elements/Modal.jsx'
+import { Breakfast } from "./Breakfast";
+import {Menu} from "./Menu";
 
 
 export const Waiter = () => {
     const [products, setProducts] = useState([]);
-    const [currentMenu, setCurrentMenu] = useState([]);
     const [productsOrder, setProductsOrder] = useState([])
-    const [showContent, setShowContent] = useState(false)
     const [client, setClient] = useState("");
     const [modal, setModal] = useState(false);
-
-
-    const getProductsData = async () => {
-        const result = await axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/Products')
-        const productData = result.data
-        setProducts(productData);
-    };
+    const [menu, setMenu] = useState(true);
+    const [menu24, setMenu24]= useState(false);
 
     const breakfastMenu = () => {
-        const breakfastRender = products.filter((products => products.menu === 'Desayuno'));
-        setCurrentMenu(breakfastRender)
+        setMenu(true)
+        setMenu24(false)
+        // const breakfastRender = products.filter((products => products.menu === 'Desayuno'));
+        // setCurrentMenu(breakfastRender)
     }
 
     const mainMenu = () => {
-        const mainMenuRender = products.filter((products => products.menu === '24hrs.'));
-        setCurrentMenu(mainMenuRender)
+        setMenu(false)
+        setMenu24(true)
+        // const mainMenuRender = products.filter((products => products.menu === '24hrs.'));
+        // setCurrentMenu(mainMenuRender)
     }
-
-
-    useEffect(() => {
-        getProductsData()
-    }, []);
 
     const navigate = useNavigate();
     const logOut = () => {
@@ -48,7 +42,6 @@ export const Waiter = () => {
             setProductsOrder((state) => {
                 return [...state, { product, qty: 1 }]
             })
-            setShowContent(true)
         } else {
             const currentProduct = productsOrder.find((item) => item.product.id === product.id)
             setProductsOrder((state) => {
@@ -57,11 +50,10 @@ export const Waiter = () => {
                     if (item.product.id === product.id) {
                         return { product, qty: currentProduct.qty + 1 }
                     } else {
-                        return item }
+                        return item
+                    }
                 });
                 return newCurrentProduct
-
-                // return [...state.filter((item) => item.product.id !== product.id), { product, qty: currentProduct.qty + 1 }]
             })
         }
     }
@@ -73,12 +65,12 @@ export const Waiter = () => {
                 if (item.product.id === product.id) {
                     return { product, qty: currentProduct.qty - 1 }
                 } else {
-                    return item }
+                    return item
+                }
             });
             return newCurrentProduct
-            // return [...state.filter((item) => item.product.id !== product.id), { product, qty: currentProduct.qty - 1 }]
         })
-    }
+    };
 
     const deleteProduct = (product) => {
         const filterProducts = productsOrder.filter((item) => item.product.id !== product.id)
@@ -99,7 +91,6 @@ export const Waiter = () => {
             items: productsOrder,
             total: totalPrice()
         }
-        console.log(clientOrder)
         axios.post('https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder', clientOrder)
         clearOrder()
         setClient('')
@@ -115,12 +106,11 @@ export const Waiter = () => {
         setModal(false);
     }
 
-    const showModal = (user) => {
+    const showModal = () => {
         setModal(true);
-
     };
 
-    console.log(productsOrder, '::::::::::.');
+
     return (
         <section className='waiterView'>
             <div className='newOrder'>
@@ -133,14 +123,8 @@ export const Waiter = () => {
                     <button className='btnGray' onClick={breakfastMenu}>DESAYUNO</button>
                     <button className='btnViolet' onClick={mainMenu}>24 HORAS</button>
                 </section>
-                <div className="container-menu">
-                    {currentMenu.map((item) =>
-                        <button className="container-item" onClick={() => addProductOrder(item)} key={item.id}>
-                            <p className="productName">{item.product}</p>
-                            <p>${item.price}</p>
-                        </button>
-                    )}
-                </div>
+                {menu &&<Breakfast className="container-menu" addProductOrder={addProductOrder} /> }
+                {menu24 && <Menu  className="container-menu" addProductOrder={addProductOrder} /> }
             </div>
             <div className='client'>
                 <section className='idOrder'>
