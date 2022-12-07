@@ -54,7 +54,7 @@
     grid-template-rows: auto auto auto auto;
     gap: 2vw;
     overflow: auto;
-    height: 83vh;
+    height: 85vh;
 }
 
 .kitchenTicket {
@@ -87,13 +87,9 @@
 
 .OrderItem p {
     margin: 0.5vw;
-
 }
 
-#footerOrders {
-
-    justify-self: flex-end;
-    align-self: flex-end;
+.footerOrders, .delete {
     background: none;
     border: none;
 }

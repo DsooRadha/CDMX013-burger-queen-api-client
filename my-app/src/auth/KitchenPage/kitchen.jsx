@@ -33,7 +33,7 @@ export const Kitchen = () => {
                     {orderKitchen.length > 0 && orderKitchen.map((item) =>
                         <div className='kitchenTicket' key={item.id} >
                             <section className="headerOrder">
-                                <CloseIcon key={item.id} />
+                            <button className="delete"><CloseIcon key={item.id} /></button>
                                 <p> {item.name}</p>
                                 <p>{item.hour}</p>
                             </section>
@@ -44,7 +44,7 @@ export const Kitchen = () => {
                                        <p> {element.product.product}</p>
                                     </div>
                                 )}
-                           <button id="footerOrders"> <CheckIcon key={item.id} /></button>
+                           <button className="footerOrders"> <CheckIcon key={item.id} /></button>
                            </div>
                         </div>
                     )}
