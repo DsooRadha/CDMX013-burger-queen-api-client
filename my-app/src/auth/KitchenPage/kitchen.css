@@ -1,17 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 .backKitchen {
     display: grid;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
     height: 95vh;
     background-color: #343240;
     margin: -1vw;
     grid-template-columns: 27vw 72vw;
     padding: 2vw;
+    font-family: 'Inter', sans-serif;
 
+}
+
+.backKitchen .newOrder{
+    height: 95vh ;
 }
 
 .kitchen {
@@ -22,14 +25,14 @@
 .btnPending,
 .btnReady {
     background-color: #EAAC40;
-    padding: 3vh;
     border-radius: 1vh;
     color: white;
     font-family: 'Inter', sans-serif;
-    font-size: 1.3em;
+    font-size: 1em;
     width: 15vw;
     height: 5vh;
-
+    margin: 1vw;
+    font-weight: bolder;
 }
 
 .btnReady {
@@ -42,15 +45,16 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    width: 60vw;
+    width: 65vw;
 }
 
 .orders {
     display: grid;
-    grid-template-columns: 20vw 20vw 20vw;
+    grid-template-columns: 21vw 21vw 21vw;
     grid-template-rows: auto auto auto auto;
     gap: 2vw;
     overflow: auto;
+    height: 83vh;
 }
 
 .kitchenTicket {
@@ -71,16 +75,25 @@
     align-items: center;
     height: 3.5vh;
     margin: -0.15vh;
-    border-radius: 0.5vw 0.5vw;
+    border-radius: 0.5vw 0.5vw 0 0;
+    padding: 0.5vh;
 }
 
-.OrderItem{
+.OrderItem {
     margin: 0.5vh;
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
 }
 
-.OrderItem p{
+.OrderItem p {
     margin: 0.5vw;
-    
+
+}
+
+#footerOrders {
+
+    justify-self: flex-end;
+    align-self: flex-end;
+    background: none;
+    border: none;
 }

@@ -12,13 +12,15 @@ export const Kitchen = () => {
     const getOrders = async () => {
         const result = await axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder')
         setOrderKitchen(result.data);
+        console.log(result.data)
+        
     };
 
     useEffect(() => {
         getOrders()
     }, []);
 
-    // console.log(':::::::::::::::', orderKitchen[0].items[0].product.product)
+    console.log(':::::::::::::::', orderKitchen.sort((a, b) =>  b.id - a.id))
     return (
         <section className="backKitchen">
             <Buttons message='PEDIDOS' />
@@ -35,15 +37,15 @@ export const Kitchen = () => {
                                 <p> {item.name}</p>
                                 <p>{item.hour}</p>
                             </section>
-                            <div>
+                            <div className="command">
                                 {item.items.map((element) =>
                                     <div className="OrderItem" key={element.id}>
                                        <p> {element.qty} </p>
                                        <p> {element.product.product}</p>
                                     </div>
                                 )}
-                            </div>
-                            <CheckIcon key={item.id} />
+                           <button id="footerOrders"> <CheckIcon key={item.id} /></button>
+                           </div>
                         </div>
                     )}
 
