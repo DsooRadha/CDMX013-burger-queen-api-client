@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/CDMX013-burger-queen-api-client/static/css/main.592a7593.css",
+    "main.js": "/CDMX013-burger-queen-api-client/static/js/main.49bdd2c7.js",
+    "index.html": "/CDMX013-burger-queen-api-client/index.html",
+    "main.592a7593.css.map": "/CDMX013-burger-queen-api-client/static/css/main.592a7593.css.map",
+    "main.49bdd2c7.js.map": "/CDMX013-burger-queen-api-client/static/js/main.49bdd2c7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.592a7593.css",
+    "static/js/main.49bdd2c7.js"
+  ]
+}
