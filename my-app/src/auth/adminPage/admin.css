@@ -6,8 +6,7 @@
 [data-column-id="e-mail"].rdt_TableCol,
 [data-column-id="password"].rdt_TableCol,
 [data-column-id="producto"].rdt_TableCol,
-[data-column-id="precio"].rdt_TableCol
- {
+[data-column-id="precio"].rdt_TableCol {
   background-color: #56273B;
   font-family: 'Inter', sans-serif;
   font-size: 1.2em;
@@ -74,7 +73,8 @@
   width: 13vw;
 }
 
-.inputAdm, .edit input {
+.inputAdm,
+.edit input {
   padding: 1.5vh;
   border-color: #56273B;
   border-radius: 1vh;
@@ -122,11 +122,12 @@
   display: flex;
   flex-direction: column;
 }
-.modalUser p{
+
+.modalUser p {
   text-align: center;
 }
 
-.modalUser img{
+.modalUser img {
   opacity: 1;
   margin: auto;
   margin-left: 16vw;
@@ -136,28 +137,31 @@
   margin: 2vw;
   background-color: rgb(40, 135, 40);
   border: none;
-  color:aliceblue;
+  color: aliceblue;
   border-radius: 1vh;
   width: 8vw;
-  height: 5vh ;
+  height: 5vh;
   align-items: center;
 }
 
-.cancelBtn{
+.cancelBtn {
   background-color: rgb(135, 40, 40);
   border: none;
-  color:aliceblue;
+  color: aliceblue;
   border-radius: 1vh;
   width: 8vw;
-  height: 5vh ;
+  height: 5vh;
 }
 
-.buttons{
+.buttons {
   margin-left: 13vw;
 }
+
 .productsTable {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1vh 2vw ;
+  padding: 1vh 2vw;
+  overflow: scroll;
+  height: 90vh;
 }

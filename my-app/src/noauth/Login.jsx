@@ -12,7 +12,6 @@ export const Welcome = (props) => {
     const [errorInput, setError] = useState(false);
     const [message, setMessage] = useState(false);
     const { setUser } = props;
-
     const navigate = useNavigate();
 
     const handleEmail = (e) => {

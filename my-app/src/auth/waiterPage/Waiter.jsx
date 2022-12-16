@@ -5,12 +5,14 @@ import { Ticket } from "./Ticket";
 import { Modal } from '../elements/Modal.jsx'
 import { MenuBQ } from "./MenuBQ";
 import { Buttons } from "./Buttons";
+import { MessageError } from '../../noauth/MessageError';
 
 export const Waiter = ({ setUser }) => {
     const [productsOrder, setProductsOrder] = useState([])
     const [currentMenu, setCurrentMenu] = useState('Desayuno');
     const [client, setClient] = useState("");
     const [modal, setModal] = useState(false);
+    const[showMessageError, setShowMessageError]=useState(false)
 
     const breakfastMenu = () => {
         setCurrentMenu('Desayuno')
@@ -21,6 +23,7 @@ export const Waiter = ({ setUser }) => {
     }
 
     const addProductOrder = (product) => {
+        setShowMessageError(false)
         if (!productsOrder.find((item) => item.product.id === product.id)) {
             setProductsOrder((state) => {
                 return [...state, { product, qty: 1 }]
@@ -83,6 +86,7 @@ export const Waiter = ({ setUser }) => {
     const clearOrder = () => {
         setProductsOrder([]);
         setClient('')
+        setShowMessageError(false)
     };
 
     const closeModal = () => {
@@ -90,7 +94,7 @@ export const Waiter = ({ setUser }) => {
     };
 
     const showModal = () => {
-        setModal(true);
+        client === '' || productsOrder.length < 1 ?setShowMessageError(true) : setModal(true);
     };
 
     return (
@@ -108,6 +112,7 @@ export const Waiter = ({ setUser }) => {
                     <input type="text" placeholder="Customer name" value={client} onChange={(e) => setClient(e.target.value)} />
                 </section>
                 <div className='orderProducts'>
+                    {showMessageError && <MessageError message='Llena los campos requeridos (Cliente y productos)'/>}
                     {productsOrder.length > 0 && productsOrder.map((item) => <Ticket addProductOrder={addProductOrder}
                         deleteProductOrder={decreaseProductOrder} item={item} key={item.product.id}
                         deleteItem={() => deleteProduct(item.product)} />)}
