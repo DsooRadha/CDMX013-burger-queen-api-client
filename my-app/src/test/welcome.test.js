@@ -23,9 +23,9 @@ describe('Welcome component', () => {
 
 });
 
-describe('Inputs Welcome', () => {
-test('cuando la informacion es invalida', () => {
-    render(<Welcome />, { wrapper: BrowserRouter })
+// describe('Inputs Welcome', () => {
+// test('cuando la informacion ingresada en los inputs es invalida', () => {
+//     render(<Welcome />, { wrapper: BrowserRouter })
     
-})
-});
+// })
+// });

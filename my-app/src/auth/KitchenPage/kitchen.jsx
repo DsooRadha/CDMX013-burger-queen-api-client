@@ -3,10 +3,8 @@ import axios from "axios";
 import './kitchen.css';
 import { useEffect, useState } from "react";
 import PendingItem from "./PendingItem";
-import { deepPurple } from "@mui/material/colors";
 
-
-export const Kitchen = ({setUser}) => {
+export const Kitchen = ({ setUser }) => {
 
     const [ordersPending, setOrdersPending] = useState([]);
     const [buttonDone, setButtonDone] = useState(true);
@@ -15,33 +13,27 @@ export const Kitchen = ({setUser}) => {
         const result = await axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder?status=pending')
         const orders = result.data;
         setOrdersPending(orders.filter((orders => orders.status === 'pending')));
-        setButtonDone(true)
-
+        setButtonDone(true);
     };
 
     const done = async () => {
         const result = await axios.get('https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder?status=done')
-        setOrdersPending(result.data)
-        setButtonDone(false)
+        setOrdersPending(result.data);
+        setButtonDone(false);
     };
 
     useEffect(() => {
-        getOrders()
+        getOrders();
     }, []);
 
 
     const deleteOrder = async (item) => {
         await axios.delete(`https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder/${item.id}`, item)
-        console.log(item)
-        if(item.status==='done'){
-            done()
-        }else{
-        getOrders()
-    }
+        item.status === 'done' ? done() : getOrders();
     };
 
     const addKeyProducts = async (order) => {
-     
+
         const date = new Date();
         const hour = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 
@@ -63,14 +55,14 @@ export const Kitchen = ({setUser}) => {
             done: hour,
             status: 'done',
             time: hours + 'hrs ' + minutes + 'min ' + seconds + 'seg'
-        }
+        };
         await axios.put(`https://637265f4025414c6370eb684.mockapi.io/api/bq/clientorder/${order.id}`, orderDone)
-        getOrders()
+        getOrders();
     };
 
     return (
         <section className="backKitchen">
-            <Buttons message='PEDIDOS' setUser={setUser}/>
+            <Buttons message='PEDIDOS' setUser={setUser} />
             <div className="kitchen">
                 <div className="kitchenButtons">
                     <button onClick={() => getOrders()} className='btnPending'>
@@ -81,7 +73,8 @@ export const Kitchen = ({setUser}) => {
                     </button>
                 </div>
                 <section className="orders">
-                    {ordersPending.length > 0 && ordersPending.map((item) => <PendingItem item={item} deleteOrder={deleteOrder} buttonDone={buttonDone} addKeyProducts={addKeyProducts} /> )}
+                    {ordersPending.length > 0 && ordersPending.map((item) => <PendingItem 
+                    item={item} deleteOrder={deleteOrder} buttonDone={buttonDone} addKeyProducts={addKeyProducts} />)}
                 </section>
             </div>
         </section>
