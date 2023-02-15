@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+#products td {
+    border-collapse: collapse;
+    background-color: #ffffff;
+    font-family: 'Inter', sans-serif;
+}
+
+#products th {
+    background-color: #56273B;
+    font-family: 'Inter', sans-serif;
+    color: rgb(255, 255, 255);
+}
+
+#products tr :hover {
+    background-color: #F8C365;
+}
+
+#products th,
+#products td {
+    padding: 1vw;
+}
+
+#products .botones {
+    padding: 0 -20vw;
+}
+
+#products .columna {
+    padding: 1vw 7vw;
+}
+

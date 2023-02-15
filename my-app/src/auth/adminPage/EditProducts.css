@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+.editInp{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+    height: 90vh;
+}
+.backDiv{
+    background-color: #343240;
+    margin: -1vw;
+}
+.backDiv h1{
+    padding: 1vw;
+    background-color: #56273B;
+    color:white;
+}
+.editInp img{
+    padding: 0;
+    opacity: 0.6;
+}
+
+.edit p{
+    color:aliceblue;
+font-family: 'Inter', sans-serif;
+align-self: flex-start;
+font-size: 1.5em;
+padding: 1wv 0;
+}
+
+.edit input, .edit select{
+width: 25vw;
+font-size: 1em;
+}
+.edit select{
+    padding: 2vh;
+    width: 27vw;
+}
+.btnEdit{
+margin-top: 2vh;
+}
+
+.edit{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.backKitchen {
+    display: grid;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 95vh;
+    background-color: #343240;
+    margin: -1vw;
+    grid-template-columns: 27vw 72vw;
+    padding: 2vw;
+    position: fixed;
+}
+
+.kitchen {
+    display: grid;
+    grid-template-rows: 10vh 60vw;
+}
+
+.btnPending,
+.btnReady {
+    background-color: #EAAC40;
+    padding: 3vh;
+    border-radius: 1vh;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 1em;
+    width: 15vw;
+    border: none;
+    height: 5vh;
+}
+
+.btnReady {
+    background-color: #D9D9D9;
+    color: rgb(0, 0, 0);
+    justify-content: center;
+    text-align: center;
+    height: 5vh;
+}
+
+.kitchenButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 64vw;
+    gap: 2vw;
+    margin-top: 1vh;
+}
+
+.orders {
+    display: grid;
+    grid-template-columns: 20vw 20vw 20vw;
+    grid-template-rows: auto auto auto auto;
+    gap: 2vw;
+    overflow: auto;
+    height: 78vh;
+    margin-top: 1vh;
+}
+
+.kitchenTicket, .kitchenTicketDone {
+    background-color: #D9D9D9;
+    border-radius: 1vw;
+    border: 0.5vh solid #EAAC40;
+    position: relative;
+    padding-bottom: 5vh;
+}
+
+.kitchenTicket p {
+    color: #343240;
+}
+
+.headerOrder {
+    background-color: #EAAC40;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 3.5vh;
+    margin: -0.15vh;
+    padding: 0.5vh 1vh;
+    border-radius: 0.5vw 0.5vw 0 0;
+}
+
+.OrderItem {
+    margin: 0.5vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.OrderItem p {
+    margin: 0.5vw;
+
+}
+
+.backKitchen .newOrder {
+    margin-top: -10vh;
+}
+
+.btnPending p,
+.btnReady p {
+    margin: -1.5vh;
+    color: black;
+    font-weight: bolder;
+    font-family: 'Inter', sans-serif;
+}
+
+.headerOrder button {
+    border: none;
+    background: none;
+}
+
+.done {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: none;
+    border: none;
+    padding: 1vh;
+}
+
+.orderTime {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    background-color: #0c982d8d;
+}
+
+
+.infoBtnKitchen {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: none;
+    z-index:1;
+}
+
+.allTimes {
+    display: flex;
+    flex-direction: row;
+    margin-top: -3vh;
+    padding-bottom: 1.5vh;
+    text-align: center;
+}
