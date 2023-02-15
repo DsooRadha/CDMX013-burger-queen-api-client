@@ -39,5 +39,8 @@ En la parte de pedidos listos, se pueden visualizar las ordenes conforme van sal
 
 En los tres tipos de usuario se cuenta con un boton para cerrar sesión.
 
+### Deploy
+https://cdmx-013-burger-queen-api-client.vercel.app/
+
  >_dsoocg@gmail.com_  
  >Adei Cabañas
